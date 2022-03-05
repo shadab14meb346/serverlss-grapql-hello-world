@@ -1,0 +1,16 @@
+{
+	"name": "only-apollo-server-lambda",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"dev": "sam local start-api --template-file template.yaml",
+		"build": "aws cloudformation package --template-file template.yaml --output-template-file serverless-output.yaml --s3-bucket shadab-lambda-deploy-asln",
+		"deploy": "aws cloudformation deploy --template-file serverless-output.yaml --stack-name only-apollo-server-lambda --capabilities CAPABILITY_IAM"
+	},
+	"dependencies": {
+		"apollo-server-core": "^3.6.3",
+		"apollo-server-lambda": "^3.6.3",
+		"graphql": "^16.3.0"
+	}
+}
